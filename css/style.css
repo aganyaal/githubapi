@@ -1,0 +1,25 @@
+body{
+  color:white;
+  text-align: center;
+  background-color: #ADD8E6;
+}
+
+.jumbotron{
+  height:auto;
+  width: auto;
+  color: black;
+
+}
+
+img{
+  height:100px;
+  width:100px;
+}
+
+button{
+  color: black;
+}
+
+.output{
+  display: none;
+  }

@@ -18,28 +18,33 @@
 </head>
 
 <body>
+<!-- Navigation bar -->
   <nav class="navbar navbar-inverse navbar-static-top">
     <img src="images/github.ico" alt="">
     <h1>GITHUB USER REPOSITORY REQUEST</h1>
-    <h2 id="time" class="">TIME</h2>
-  </nav>
+    <h2 id="time" class="">TIME</h2><!--time goes in here -->
+  </nav><!-- navbar ends here-->
+
+  <!-- input section-->
   <div class="container">
-    <div class="jumbotron">
+    <div class="jumbotron"><!--jumbotron inside container to give it a rounded appearance-->
 
       <form class="" action="index.html" method="post">
         <img src="images/github1.png" alt="">
         <h3>You can view a user's github repositories here.All you need to do is:</h3>
         <label for="username">Enter the username of the person</label>
-        <input type="text" name="username" id="username" value="" placeholder="Do Not Press Enter!">
+        <input type="text" name="username" id="username" value="" placeholder="Do Not Press Enter!" autoGrow>
         <button type="button" id="getuserrepo" class="btn btn-md " name="button"><i class="fa fa-search"></i></button>
       </form>
     </div>
   </div>
 
+
+<!-- output is shown in the jumbotron below -->
   <div class="container">
-    <div class="output jumbotron">
+    <div class="output jumbotron"><!-- output is shown in the jumbotron below -->
       <h1>These are <span id="nameof"></span>'s public repositories:</h1>
-      <h3 id="repositorys"></h3>
+      <h3 id="repositorys"></h3><!--repositories shown here-->
     </div>
   </div>
 

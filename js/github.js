@@ -12,7 +12,11 @@ repositories = function(){
 repositories.prototype.getrepo = function(username, displayFunction){
   $.get('https://api.github.com/users/' + username + '/repos?access_token='+apiKey).then(function(response){
     // calls the displayFunction function
-    displayFunction(username, response[1].name);
+    var repositorie = '';
+    for (i = 0; i <response.length; i++) {
+    repositorie += response[i].name;
+    }
+        displayFunction(username, repositorie);
 // Displays the error message when an error occurs
   }).fail(function(error){
     $('#repositorys').text(error.responseJSON.message);

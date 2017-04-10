@@ -3,7 +3,7 @@ var repositories = require('./../js/github.js').repoModule;
 
 //Displays the repositories in the empty h3 element
 var displayRepository = function(username, repositoryData){
-  $("h3#repositorys").text("The first repository of " + username + " is " + repositoryData );
+  $("h3#repositorys").text("https://github.com/" + username );
 }
 
 $(document).ready(function () {

@@ -1,10 +1,6 @@
 //requires the github.js file
 var repositories = require('./../js/github.js').repoModule;
 
-// Displays the repositories in the empty h3 element
-// var displayRepository = function(name){
-//     $("#repositorys").append(response.html_url); //this appends their name as a link to their github account
-// }
 
 $(document).ready(function () {
 	//displays the current time on the page

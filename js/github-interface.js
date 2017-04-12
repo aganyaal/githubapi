@@ -1,10 +1,9 @@
 //requires the github.js file
 var repositories = require('./../js/github.js').repoModule;
 
-//Displays the repositories in the empty h3 element
-// var displayRepository = function(username, repositoryData){
-//   $(".image").append("<img src='"+response.avatar_url+"' width='100' height='100' class='img-circle'>"); //this appends their github avatars
-//   $("#repositorys").append('<a href="'+response.html_url+'">'+response.name+'</a>'); //this appends their name as a link to their github account
+// Displays the repositories in the empty h3 element
+// var displayRepository = function(name){
+//     $("#repositorys").append(response.html_url); //this appends their name as a link to their github account
 // }
 
 $(document).ready(function () {
@@ -24,6 +23,6 @@ $("#getuserrepo").click(function () {
   var name = $("#username").val();//the username input in the input section is passed into the variable//
   $("#username").val("");
   $("#nameof").text(name);//the name goes into the empty span//
-currentUserObject.getrepo(name, displayRepository);//calls the getrepo function on the username//
+currentUserObject.getrepo(name);//calls the getrepo function on the username//
 });
 });

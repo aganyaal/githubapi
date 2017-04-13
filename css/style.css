@@ -20,6 +20,6 @@ button{
   color: black;
 }
 
-.output{
-  display: none;
-  }
+ol{
+	list-style: none;
+}

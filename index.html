@@ -37,7 +37,7 @@
         <h3>You can view a user's github repositories here.All you need to do is:</h3>
         <label for="username">Enter the username of the person</label>
         <input type="text" name="username" id="username" value="" placeholder="Do Not Press Enter!" autoGrow>
-        <button type="button" id="getuserrepo" class="btn btn-md " name="button"><i class="fa fa-search"></i></button>
+        <button type="button" id="getUserRepo" class="btn btn-md " name="button"><i class="fa fa-search"></i></button>
       </form>
     </div>
   </div>
@@ -45,15 +45,18 @@
 
   <!-- output is shown in the jumbotron below -->
   <div class="container">
-    <div class="output jumbotron">
-      <!-- output is shown in the jumbotron below -->
-      <h1>Below is a link to <span id="nameof"></span>'s public repositories:</h1>
-      <h3 id="repositorys"></h3>
-      <div class="image">
+      <div class="output jumbotron">
+        <button type="submit" class="btn btn-md " name="button"><a href="javascript:history.go(0)"><i class="fa fa-refresh"></i></a></button>
+      <div id="image"></div>
+      <div id="name"></div>
+          <br>
+          <br>
+        <ul id="repo-message"></ul>
+        <ol id="repos">
 
+        </ol>
       </div>
-      <!--repositories shown here-->
-    </div>
+
   </div>
 
 

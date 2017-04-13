@@ -2,53 +2,53 @@
 exports.apiKey="dd535d8f593414f1d174380c34f5ec85ef5be3ff"
 
 },{}],2:[function(require,module,exports){
-// Requires the API key from .env file(to keep it private when pushing)
 var apiKey = require('./../.env').apiKey;
 
+function Git(){
+}
 
-//Blank constructor called repositories.
-repositories = function(){
+Git.prototype.getRepos = function(username, displayFunction){
+  $.get('https://api.github.com/users/' + username + '?access_token=' + apiKey).then(function(response){
+    displayFunction(username, response.login);
+    console.log(response);
+      $("#image").append("<img src='"+response.avatar_url+"' width='100' height='100' class='img-circle'>"); //this appends their github avatars
+        $("#name").append('<a href="'+response.html_url+'">'+response.name+'</a>'); //this appends their name as a link to their github account
+  }).fail(function(error){
+    $('#repos').text(error.responseJSON.message);
+  });
+  $.get('https://api.github.com/users/' + username + '/repos?access_token=' + apiKey).then(function(response){
+    console.log(response);
+    for(gitApi=0; gitApi < response.length; gitApi++)
+    $("#repos").append("<li><h2>Repo name:" + response[gitApi].name + "</h2></li>" + "<p id='description'>Description:" + response[gitApi].description) + "</p>" + "<br>"
+  });
+}
 
-};
-
-repositories.prototype.getrepo= function(name) {
- $.get("https://api.github.com/users/"+name+"?access_token="+apiKey).then(function(response){
-   console.log(response);
- $(".image").append("<img src='"+response.avatar_url+"' width='100' height='100' class='img-circle'>"); //this appends their github avatars
- $("#repositorys").append('<a href="'+response.html_url+'">'+response.name+'</a>'); //this appends their name as a link to their github account
- }).fail(function(error){
-   console.log(error.responseJSON.message);
- });
-};
-
-
-// allows this file to be used by another through the require action
-exports.repoModule = repositories;
-
+exports.gitModule = Git;
 },{"./../.env":1}],3:[function(require,module,exports){
 //requires the github.js file
-var repositories = require('./../js/github.js').repoModule;
+
+var Git = require('./../js/github.js').gitModule;
 
 
-$(document).ready(function () {
-	//displays the current time on the page
+
+
+var displayGitUserInfo = function(username) {
+ 
+};
+
+$(document).ready(function(){
+  var gitSearch = new Git();
+  $('#getUserRepo').click(function() {
+    var username = $('#username').val();
+    gitSearch.getRepos(username, displayGitUserInfo);
+
+      //displays the current time on the page
   function update() {
     $('#time').text(moment().format('H:mm:ss'));
   }
   //refreshes the function every second thus allowing the seconds to 'tick'
   setInterval(update, 1000);
-
-// Each new name entered creates a new repositories constructor
-var currentUserObject = new repositories();
-
-// Actions that occur when the button is clicked
-$("#getuserrepo").click(function () {
-  $(".output").show();//Shows the hidden jumbotron//
-  var name = $("#username").val();//the username input in the input section is passed into the variable//
-  $("#username").val("");
-  $("#nameof").text(name);//the name goes into the empty span//
-currentUserObject.getrepo(name);//calls the getrepo function on the username//
-});
+  });
 });
 
 },{"./../js/github.js":2}]},{},[3]);
